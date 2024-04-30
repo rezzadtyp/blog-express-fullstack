@@ -1,6 +1,6 @@
 import prisma from '@/prisma';
 import { User } from '@prisma/client';
-import { hashPassword } from 'lib/bcrypt';
+import { hashPassword } from '@/lib/bcrypt';
 
 export const registerService = async (
   body: Pick<User, 'email' | 'name' | 'password'>,

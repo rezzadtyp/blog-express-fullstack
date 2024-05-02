@@ -1,8 +1,8 @@
 import prisma from '@/prisma';
-import { appConfig } from '@/utils/config';
 import { User } from '@prisma/client';
 import { sign } from 'jsonwebtoken';
 import { comparePassword } from '@/lib/bcrypt';
+import { JWT_SECRET_KEY } from '@/config';
 
 export const loginService = async (body: Pick<User, 'email' | 'password'>) => {
   try {
@@ -22,7 +22,7 @@ export const loginService = async (body: Pick<User, 'email' | 'password'>) => {
       throw new Error('incorrect password');
     }
 
-    const token = sign({ id: user.id }, appConfig.jwtSecretKey, {
+    const token = sign({ id: user.id }, JWT_SECRET_KEY, {
       expiresIn: '2h',
     });
 

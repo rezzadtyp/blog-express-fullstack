@@ -5,19 +5,22 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useFormik } from 'formik';
 import { validationSchema } from './validationSchema';
-import useLogin from '@/hooks/api/auth/useLogin';
+import useForgotPassword from '@/hooks/api/auth/useForgotPassword';
+import { useState } from 'react';
+import { Loader2 } from 'lucide-react';
 
-const Login = () => {
-  const { login } = useLogin();
+const ForgotPassword = () => {
+  const { forgotPassword } = useForgotPassword();
+  const [isLoading, setIsLoading] = useState(false);
+
   const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: {
         email: '',
-        password: '',
       },
       validationSchema,
-      onSubmit: (values) => {
-        login(values);
+      onSubmit: ({ email }) => {
+        forgotPassword(email);
       },
     });
 
@@ -27,7 +30,7 @@ const Login = () => {
         <Card className="w-[450px]">
           <CardHeader>
             <CardTitle className="text-center text-3xl text-primary">
-              Login
+              Forgot Password
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -44,21 +47,14 @@ const Login = () => {
                   type="email"
                   value={values.email}
                 />
-
-                {/* PASSWORD */}
-                <FormInput
-                  name="password"
-                  error={errors.password}
-                  isError={!!touched.password && !!errors.password}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  placeholder="Password"
-                  type="password"
-                  value={values.password}
-                />
               </div>
-              <Button className="mt-6 w-full" type="submit">
-                Login
+              <Button
+                className="mt-6 w-full"
+                type="submit"
+                disabled={isLoading}
+              >
+                {isLoading && <Loader2 className="mr-2 h-2 w-4 animate-spin" />}
+                Submit
               </Button>
             </form>
           </CardContent>
@@ -68,4 +64,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgotPassword;

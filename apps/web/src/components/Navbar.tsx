@@ -22,17 +22,33 @@ const Navbar = () => {
 
           {Boolean(id) ? (
             <div className="flex items-center gap-8">
-              <h3 onClick={() => router.push('/')}>Home</h3>
-              <h3 onClick={() => router.push('/write')}>Write</h3>
-              <h3 onClick={() => router.push('/profile')}>Profile</h3>
-              <h3 onClick={logout}>Logout</h3>
+              <h3 className="cursor-pointer" onClick={() => router.push('/')}>
+                Home
+              </h3>
+              <h3 className="cursor-pointer" onClick={() => router.push('/profile')}>
+                Profile
+              </h3>
+              <h3 className="cursor-pointer" onClick={logout}>
+                Logout
+              </h3>
             </div>
           ) : (
             <div className="flex items-center gap-8">
-              <h3 onClick={() => router.push('/')}>Home</h3>
-              <h3 onClick={() => router.push('/write')}>Write</h3>
-              <h3 onClick={() => router.push('/profile')}>Profile</h3>
-              <h3 onClick={() => router.push('/register')}>Register</h3>
+              <h3 className="cursor-pointer" onClick={() => router.push('/')}>
+                Home
+              </h3>
+              <h3
+                className="cursor-pointer"
+                onClick={() => router.push('/login')}
+              >
+                Login
+              </h3>
+              <h3
+                className="cursor-pointer"
+                onClick={() => router.push('/register')}
+              >
+                Register
+              </h3>
             </div>
           )}
         </div>

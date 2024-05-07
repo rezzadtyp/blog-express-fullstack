@@ -25,6 +25,9 @@ const Navbar = () => {
               <h3 className="cursor-pointer" onClick={() => router.push('/')}>
                 Home
               </h3>
+              <h3 className="cursor-pointer" onClick={() => router.push('/write')}>
+                Write
+              </h3>
               <h3 className="cursor-pointer" onClick={() => router.push('/profile')}>
                 Profile
               </h3>

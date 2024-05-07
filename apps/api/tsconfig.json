@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2015",
     "module": "commonjs",
-    "types" : ["node", "express"],
+    "types" : ["node", "express", "multer"],
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,

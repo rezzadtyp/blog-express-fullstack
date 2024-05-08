@@ -45,7 +45,7 @@ const RichTextEditor: FC<RichTextEditorProps> = ({
         onChange={onChange}
         modules={quillModules}
         formats={quillFormats}
-        className="h-[300px] overflow-hidden rounded-md pb-44"
+        className="h-[300px] overflow-hidden rounded-md pb-20"
       />
       {isError && (
         <div className="text-xs text-red-500">{label} is Required</div>

@@ -5,9 +5,17 @@ import FormInput from '@/components/FormInput';
 import FormTextArea from '@/components/FormTextArea';
 import PreviewImages from '@/components/PreviewImages';
 import RichTextEditor from '@/components/RichTextEditor';
+import { Button } from '@/components/ui/button';
+import AuthGuard from '@/hoc/AuthGuard';
+import useCreateBlog from '@/hooks/api/blog/useCreateBlog';
+import { useAppSelector } from '@/redux/hooks';
+import { IFormCreateBlog } from '@/types/blog.type';
 import { useFormik } from 'formik';
 
 const Write = () => {
+  const { createBlog } = useCreateBlog();
+  const { id } = useAppSelector((state) => state.user);
+
   const {
     handleSubmit,
     values,
@@ -16,7 +24,7 @@ const Write = () => {
     handleChange,
     touched,
     setFieldValue,
-  } = useFormik({
+  } = useFormik<IFormCreateBlog>({
     initialValues: {
       title: '',
       category: '',
@@ -24,7 +32,9 @@ const Write = () => {
       description: '',
       content: '',
     },
-    onSubmit: () => {},
+    onSubmit: (values) => {
+      createBlog({ ...values, userId: id });
+    },
   });
 
   return (
@@ -82,10 +92,13 @@ const Write = () => {
             value={values.content}
             isError={Boolean(errors.content)}
           />
+          <div className="mb-4 flex justify-end">
+            <Button type="submit">Submit</Button>
+          </div>
         </div>
       </form>
     </main>
   );
 };
 
-export default Write;
+export default AuthGuard(Write);

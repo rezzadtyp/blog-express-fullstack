@@ -20,6 +20,7 @@ export class BlogRouter {
       uploader('IMG', '/images').array('thumbnail', 1),
       this.blogController.createBlog,
     );
+    this.router.get('/', this.blogController.getBlogsController);
     this.router.get('/:id', this.blogController.getBlogController);
   }
 

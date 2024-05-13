@@ -11,6 +11,7 @@ interface FormInputProps {
   onBlur: FormikHandlers['handleBlur'];
   value: string;
   isError: boolean;
+  label: string;
   error: string | undefined;
 }
 
@@ -21,11 +22,12 @@ const FormTextArea: React.FC<FormInputProps> = ({
   onBlur,
   value,
   isError,
+  label,
   error,
 }) => {
   return (
     <div className="flex flex-col space-y-1.5">
-      <Label htmlFor={placeholder} className={isError ? 'text-red-500' : ''}>
+      <Label htmlFor={label} className={isError ? 'text-red-500' : ''}>
         {placeholder}
       </Label>
       <Textarea

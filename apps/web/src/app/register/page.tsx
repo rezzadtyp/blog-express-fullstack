@@ -37,6 +37,7 @@ const Register: React.FC = () => {
                 {/* NAME */}
                 <FormInput
                   name="name"
+                  label="Name"
                   error={errors.name}
                   isError={!!touched.name && !!errors.name}
                   onBlur={handleBlur}
@@ -49,6 +50,7 @@ const Register: React.FC = () => {
                 {/* EMAIL */}
                 <FormInput
                   name="email"
+                  label="Email"
                   error={errors.email}
                   isError={!!touched.email && !!errors.email}
                   onBlur={handleBlur}
@@ -61,6 +63,7 @@ const Register: React.FC = () => {
                 {/* PASSWORD */}
                 <FormInput
                   name="password"
+                  label="Password"
                   error={errors.password}
                   isError={!!touched.password && !!errors.password}
                   onBlur={handleBlur}

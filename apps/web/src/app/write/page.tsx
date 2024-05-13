@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import AuthGuard from '@/hoc/AuthGuard';
 import useCreateBlog from '@/hooks/api/blog/useCreateBlog';
 import { useAppSelector } from '@/redux/hooks';
-import { IFormCreateBlog } from '@/types/blog.type';
+import { IFormBlog } from '@/types/blog.type';
 import { useFormik } from 'formik';
 
 const Write = () => {
@@ -24,7 +24,7 @@ const Write = () => {
     handleChange,
     touched,
     setFieldValue,
-  } = useFormik<IFormCreateBlog>({
+  } = useFormik<IFormBlog>({
     initialValues: {
       title: '',
       category: '',
@@ -43,6 +43,7 @@ const Write = () => {
         <div className="mx-auto flex max-w-5xl flex-col gap-4">
           <FormInput
             name="title"
+            label="Title"
             error={errors.title}
             isError={!!touched.title && !!errors.title}
             onBlur={handleBlur}
@@ -53,6 +54,7 @@ const Write = () => {
           />
           <FormInput
             name="category"
+            label="Title"
             error={errors.category}
             isError={!!touched.category && !!errors.category}
             onBlur={handleBlur}
@@ -63,6 +65,7 @@ const Write = () => {
           />
           <FormTextArea
             name="description"
+            label="Description"
             error={errors.description}
             isError={!!touched.description && !!errors.description}
             onBlur={handleBlur}

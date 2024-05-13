@@ -12,6 +12,7 @@ interface FormInputProps {
   onChange: FormikHandlers['handleChange'];
   onBlur: FormikHandlers['handleBlur'];
   value: string;
+  label: string;
   isError: boolean;
   error: string | undefined;
 }
@@ -23,13 +24,14 @@ const FormInput: React.FC<FormInputProps> = ({
   onChange,
   onBlur,
   value,
+  label,
   isError,
   error,
 }) => {
   return (
     <div className="flex flex-col space-y-1.5">
-      <Label htmlFor={placeholder} className={isError ? 'text-red-500' : ''}>
-        {placeholder}
+      <Label htmlFor={label} className={isError ? 'text-red-500' : ''}>
+        {label}
       </Label>
       <Input
         name={name}

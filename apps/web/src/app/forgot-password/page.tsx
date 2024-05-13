@@ -39,6 +39,7 @@ const ForgotPassword = () => {
                 {/* EMAIL */}
                 <FormInput
                   name="email"
+                  label='Email'
                   error={errors.email}
                   isError={!!touched.email && !!errors.email}
                   onBlur={handleBlur}

@@ -30,8 +30,6 @@ export const getBlogsService = async (query: GetBlogsQuery) => {
       data: blogs,
       meta: { page, take, total: count },
     };
-
-    return blogs;
   } catch (error) {
     throw error;
   }

@@ -3,6 +3,7 @@ import prisma from '@/prisma';
 import { createBlogService } from '@/services/blog/create-blog.service';
 import { getBlogService } from '@/services/blog/get-blog.service';
 import { getBlogsService } from '@/services/blog/get-blogs.service';
+import { updateBlogService } from '@/services/blog/update-blog.service';
 
 export class BlogController {
   async createBlog(req: Request, res: Response, next: NextFunction) {
@@ -41,6 +42,21 @@ export class BlogController {
       };
 
       const result = await getBlogsService(query);
+
+      return res.status(200).send(result);
+    } catch (error) {
+      next(error);
+    }
+  }
+  async updateBlogController(req: Request, res: Response, next: NextFunction) {
+    try {
+      const files = req.files as Express.Multer.File[];
+
+      const result = await updateBlogService(
+        Number(req.params.id),
+        req.body,
+        files[0],
+      );
 
       return res.status(200).send(result);
     } catch (error) {

@@ -20,7 +20,7 @@ const EditBlog = ({ params }: { params: { id: string } }) => {
     description: blog?.description || '',
     content: blog?.content || '',
   };
-
+  
   if (isLoadingGetBlog) {
     <div className="container text-center pt-24 text-4xl font-extrabold">
       Loading
@@ -30,7 +30,6 @@ const EditBlog = ({ params }: { params: { id: string } }) => {
   if (id !== blog?.userId) {
     return <Unauthorized />;
   }
-
   return (
     <main className="container mx-auto px-4">
       <Formik
